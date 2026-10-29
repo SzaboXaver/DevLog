@@ -1,0 +1,106 @@
+#settings-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -2px -2px 2px 0.25px rgb(11, 216, 134);
+    border-radius: 11.5px;
+}
+
+#settings-box .darkBtn {
+    transition: all 0.25s ease-out;
+    background-color: rgb(40,37,37);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 11.5px;
+    box-shadow: 0px -2px rgb(11, 216, 134);
+}
+
+#settings-box .darkBtn:hover {
+    transition: all 0.25s ease-out;
+    background-color: white;
+    color: black;
+    box-shadow: 0px -2px rgb(216, 38, 11);
+}
+
+#settings-box .lightBtn {
+    transition: all 0.25s ease-out;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 11.5px;
+    box-shadow: 0px -2px rgb(216, 38, 11);
+}
+
+#settings-box .lightBtn:hover {
+    transition: all 0.25s ease-out;
+    background-color: rgb(40,37,37);
+    color: white;
+    box-shadow: 0px -2px rgb(11, 216, 134);
+}
+
+#settings-box #logoutBtn {
+    transition: all 0.25s ease-out;
+    background-color: rgb(40,37,37);
+    color: white;
+    border: none;
+    border-radius: 11.5px;
+    padding: 15px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0px -2px rgb(11, 216, 134);
+}
+
+#settings-box #logoutBtn:hover {
+    transition: all 0.25s ease-out;
+    background-color: rgb(255, 106, 0);
+    color: white;
+    box-shadow: none;
+}
+
+#settings-box #deleteBtn {
+    transition: all 0.25s ease-out;
+    background-color: rgb(40,37,37);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    border-radius: 11.5px;
+    cursor: pointer;
+    box-shadow: 0px -2px rgb(216, 11, 11);
+}
+
+#settings-box #deleteBtn:hover {
+    transition: all 0.25s ease-out;
+    background-color: red;
+    color: white;
+    box-shadow: none;
+}
+
+#settings-box #navlink {
+    transition: 0.25s all ease-in;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    border-radius: 11.5px;
+    border: none;
+    color: white;
+    background-color: rgb(40,37,37);
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px -2px rgb(11, 216, 134);
+}
+
+#settings-box #navlink:hover {
+    transition: 0.25s all ease-in;
+    background-color: rgb(40, 235, 170);
+    box-shadow: none;
+}
