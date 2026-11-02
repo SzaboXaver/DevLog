@@ -1,0 +1,51 @@
+#register-root {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: bold;
+    border-radius: 11.5px;
+    border: solid 1px rgb(69, 66, 66);
+    padding: 20px 10px;
+    color: white;
+}
+
+#register-root input {
+    padding: 10px 15px;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 11.5px;
+    border: solid 1px rgb(82, 78, 78);
+    background-color: transparent;
+    color: white;
+}
+
+#register-root button {
+    background-color: rgb(36, 137, 76);
+    border: none;
+    border-radius: 11.5px;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#register-root #sign-up {
+    background-color: rgb(0, 166, 255)
+}
+
+#register-root a {
+    text-decoration: none;
+    color: white;
+}
+
+#register-root #row {
+    display: flex;
+}
