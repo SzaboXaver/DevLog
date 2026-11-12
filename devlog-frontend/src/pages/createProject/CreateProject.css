@@ -1,0 +1,64 @@
+#addProject-root {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 11.5px;
+}
+
+#addProject-root input {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    padding-left: 5px;
+    background-color: rgb(40,37,37);
+    border: none;
+    color:white;
+}
+
+#addProject-root input:focus {
+    outline: rgb(11, 216, 134) solid 0.5px;
+}
+
+#addProject-root button {
+    transition: all 0.25s ease-out;
+    background-color: rgb(40,37,37);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 11.5px;
+    box-shadow: 0px -2px rgb(11, 216, 134);
+    margin-bottom: 40px;
+}
+
+#addProject-root button:hover {
+    transition: all 0.25s ease-out;
+    background-color: rgb(11, 216, 134);
+    color: black;
+    box-shadow:none;
+}
+
+#addProject-root label {
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#addProject-root textarea {
+    color:white;
+    border: none;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    padding-left: 5px;
+    background-color: rgb(40,37,37);
+    resize: none;
+    height: 100px;
+}
+
+#addProject-root textarea:focus {
+    outline: rgb(11, 216, 134) solid 0.5px;
+}

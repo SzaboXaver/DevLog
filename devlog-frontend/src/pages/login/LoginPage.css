@@ -1,0 +1,41 @@
+#login-root {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    border-radius: 11.5px;
+    border: solid 1px rgb(69, 66, 66);
+    padding: 20px 10px;
+    color: white;
+}
+
+#login-root input {
+    padding: 10px 15px;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 11.5px;
+    border: solid 1px rgb(82, 78, 78);
+    background-color: transparent;
+    color: white;
+}
+
+#login-root button {
+    background-color: rgb(0, 166, 255);
+    border: none;
+    border-radius: 11.5px;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#login-root a {
+    font-weight: lighter;
+    color: darkgray;
+    margin-top: 5px;
+}
