@@ -57,7 +57,7 @@ export default function CreateProjectPage() {
     return (
         <>
             <title>DevLog - Create project</title>
-            <div className="mt-20 pb-10 pt-10 flex flex-col ml-auto mr-auto w-200 text-center items-center dark:bg-[#292828] shadow-2xl">
+            <div className="mt-20 pb-10 pt-10 flex flex-col ml-auto mr-auto w-200 text-center items-center dark:bg-[#292828] shadow-2xl dark:shadow-white/10">
                 <h1 className="text-4xl mb-10">DevLog - Create Project</h1>
                 <label className="text-2xl mb-2.5">Project name</label>
                 <input value={projectName} onChange={(e) => setProjectName(e.target.value)} className="border border-indigo-600 rounded-2xl py-4 px-8 pl-5 w-100" type="text" placeholder="e.g. DevLog" />

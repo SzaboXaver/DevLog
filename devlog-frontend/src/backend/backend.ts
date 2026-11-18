@@ -71,7 +71,7 @@ export async function connectToGitHub() {
     if (!data || error) console.error("No authenticated user", error);
     const userToken = data.session?.access_token;
 
-    const response = await axios.get("http://localhost:3000/api/github/install-url", {
+    const response = await axios.get("https://localhost:3000/api/github/install-url", {
         headers: {
             Authorization: `Bearer ${userToken}`
         }
@@ -84,35 +84,35 @@ export async function connectToGitHub() {
 }
 
 export async function createProject(title: string, description: string, repoIds: number[] = []) {
-  const { data: { user }, error: authError } = await supabase.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error("User not authenticated");
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError) throw authError;
+    if (!user) throw new Error("User not authenticated");
 
-  const { data: project, error: insertError } = await supabase
-    .from("projects")
-    .insert({
-      user_id: user.id,
-      title,
-      description,
-      date_of_start: dayjs().format("YYYY-MM-DD"),
-      status: "in progress",
-    })
-    .select("id")
-    .single();
-  if (insertError) throw insertError;
+    const { data: project, error: insertError } = await supabase
+        .from("projects")
+        .insert({
+            user_id: user.id,
+            title,
+            description,
+            date_of_start: dayjs().format("YYYY-MM-DD"),
+            status: "in progress",
+        })
+        .select("id")
+        .single();
+    if (insertError) throw insertError;
 
-    
 
-  if (repoIds.length > 0) {
-    const { error: repoError } = await supabase
-      .from("repositories")
-      .update({ project_id: project.id })
-      .in("github_repo_id", repoIds)
-      .eq("user_id", user.id);
-    if (repoError) throw repoError;
-  }
 
-  return { status: 201, projectId: project.id };
+    if (repoIds.length > 0) {
+        const { error: repoError } = await supabase
+            .from("repositories")
+            .update({ project_id: project.id })
+            .in("github_repo_id", repoIds)
+            .eq("user_id", user.id);
+        if (repoError) throw repoError;
+    }
+
+    return { status: 201, projectId: project.id };
 }
 
 export async function loadPorjects() {
@@ -121,10 +121,76 @@ export async function loadPorjects() {
     if (!data || error) console.error("No authenticated user", error);
     const userToken = data.session?.access_token;
 
-    const response = await axios.get("http://localhost:3000/api/github/loadRepositories", {
+    const response = await axios.get("https://localhost:3000/api/github/loadRepositories", {
         headers: {
             Authorization: `Bearer ${userToken}`
         }
     });
     return response.data;
+}
+
+export async function openProject(repoId: number) {
+    const { data, error } = await supabase.auth.getSession();
+    if (!data || error) console.error("No authenticated user", error);
+    const userToken = data.session?.access_token;
+
+    const response = await axios.get("https://localhost:3000/api/github/loadRepository", {
+        params: {
+            repoId: repoId
+        },
+        headers: {
+            Authorization: `Bearer ${userToken}`
+        }
+    });
+    console.log(response.data);
+    return { status: 200, data: response.data };
+}
+
+export async function createError(title: string, description: string, projectId: string) {
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError) throw authError;
+    if (!user) throw new Error("User not authenticated");
+
+    const { data, error } = await supabase.from("error")
+        .insert({
+            user_id: user.id,
+            error_title: title,
+            error_description: description,
+            error_status: "under solving",
+            date_of_error_appearing: dayjs().format("YYYY-MM-DD"),
+            project_id: projectId
+        }).select("id").single();
+
+    if (error) {
+        console.error({ message: "Error during updating informations", error: error });
+        return;
+    }
+
+    const { error: updateError } = await supabase
+        .from("projects").update({ error_id: data?.id }).eq("id", projectId);
+
+    if (updateError) {
+        console.error({ message: "Error during updating informations", error: updateError });
+        return;
+    }
+
+    return { status: 201 };
+}
+
+export async function updateError(errorId: string | undefined) {
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError) throw authError;
+    if (!user) throw new Error("User not authenticated");
+
+    const {error} = await supabase.from("error")
+    .update({
+        error_status: "solved",
+        date_when_error_got_fixed: dayjs().format("YYYY-MM-DD")
+    }).eq("user_id", user?.id);
+    if(error) {
+        console.error({status: 500, message: "Error during updating", error: error});
+        return;
+    }
+
+    return {status: 201};
 }
