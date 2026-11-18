@@ -19,3 +19,44 @@ You'll be able to find all the versions in the tags over time.
 
 #### Backend
 * From now on, backend uses `HTTPS` protocol for transferring data
+
+### Getting started
+
+### Method 1:
+1. Download the source code from here using the *"green Code → Download ZIP"* button.
+2. Extract the files into a folder.
+3. Open an IDE (e.g. Visual Studio Code).
+4. Open a new terminal and navigate to the project folder.
+
+```bash
+cd <DevLog location>
+```
+
+5. Type the following commands:
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+### Method 2:
+1. In an IDE's terminal (e.g. Visual Studio Code), type the following command:
+
+```bash
+git clone https://github.com/SzaboXaver/DevLog.git
+```
+
+2. Navigate to the project folder:
+
+```bash
+cd <DevLog>
+```
+
+Here you can click: File → Open Folder, or type the following command in the terminal:
+
+```bash
+code . -r
+```
