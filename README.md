@@ -10,6 +10,14 @@ I tried to challenge myself instead of making a regular to-do app.
 
 You'll be able to find all the versions in the tags over time.
 
+## About V0.9
+### Featues
+
+#### Frontend
+* The data loading experience, is now much smoother and more visually appealing.
+* Animation library:  `Motion`
+* Input validation
+
 ## About V0.7
 ### Features
 
