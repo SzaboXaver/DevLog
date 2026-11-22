@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { loadData, signOut, loadPorjects, openProject } from "../../backend/backend";
+import { motion } from "motion/react";
 export default function HomePage() {
     const navigate = useNavigate();
 
@@ -56,16 +57,16 @@ export default function HomePage() {
     return (
         <>
             <title>DevLog - Home</title>
-            <div className="flex pr-5 pl-5 mt-5 ml-5 mr-5 shadow-xl dark:shadow-white/10 items-center justify-between bg-gray-100 dark:bg-[#292828]">
+            <motion.div transition={{ type: "spring", duration: 1.5 }} initial={{ opacity: 0, y: "-100px" }} animate={{ opacity: 1, y: "0px" }} className="flex pr-5 pl-5 mt-5 ml-5 mr-5 shadow-xl dark:shadow-white/10 items-center justify-between bg-gray-100 dark:bg-[#292828]">
                 <h1 className="text-2xl">DEVLOG - Welcome, {userName}!</h1>
                 <NavLink className="transation-all duration-250 ease-in-out border border-indigo-500 py-4 px-8 hover:text-white font-bold hover:bg-indigo-400 hover:shadow-lg rounded-2xl" to="">Settings</NavLink>
                 <NavLink className="transation-all duration-250 ease-in-out border border-indigo-500 py-4 px-8 hover:text-white font-bold hover:bg-indigo-400 hover:shadow-lg rounded-2xl" to="createProject">Create project</NavLink>
                 <button onClick={handleSignOut} className="transition-all duration-250 ease-in-out cursor-pointer border border-red-400 py-4 px-8 rounded-2xl font-bold hover:bg-red-300 hover:text-white hover:shadow-lg">Sign out</button>
-            </div>
+            </motion.div>
 
-            <div className="flex ml-5 mt-5 mr-5 h-max">
+            <motion.div className="flex ml-5 mt-5 mr-5 h-max">
                 {userData && (
-                    <div className="flex">
+                    <motion.div transition={{ type: "spring", duration: 1.5 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="flex ml-5 mt-5 mr-5 h-max">
                         <img className="rounded-2xl w-30 h-30 shadow-lg dark:shadow-white/10" src={userData.avatar_url} />
                         <div className="flex flex-col w-100 ml-5 border dark:border-white border-black dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-5 pl-5 shadow-lg dark:shadow-white/10">
                             <h2 className="text-2xl mb-2">{userData.name}</h2>
@@ -73,39 +74,39 @@ export default function HomePage() {
                             <p className="mb-2">{userData.bio}</p>
                             <NavLink to={userData.html_url}>github.com/{userData.login}</NavLink>
                         </div>
-                    </div>
+                    </motion.div>
                 )}
                 {userData && (
-                    <div>
+                    <div className="mt-5">
                         <div className="flex">
-                            <div className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
+                            <motion.div transition={{ type: "spring", duration: 1.5 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
                                 <h3 className="text-2xl">{userData.public_repos}</h3>
                                 <h4 className="font-bold">Repositories</h4>
                                 <p>Public repositories</p>
-                            </div>
-                            <div className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
+                            </motion.div>
+                            <motion.div transition={{ type: "spring", duration: 2 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
                                 <h3 className="text-2xl">{userData.followers}</h3>
                                 <h4 className="font-bold">Followers</h4>
                                 <p>People following you</p>
-                            </div>
-                            <div className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
+                            </motion.div>
+                            <motion.div transition={{ type: "spring", duration: 2.5 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
                                 <h3 className="text-2xl">{userData.following}</h3>
                                 <h4 className="font-bold">Following</h4>
                                 <p>Following users</p>
-                            </div>
-                            <div className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
+                            </motion.div>
+                            <motion.div transition={{ type: "spring", duration: 3 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="flex flex-col w-60 border border-black text-center dark:border-white ml-1 dark:bg-[#292828] bg-gray-100 h-max rounded-2xl mr-1 shadow-lg dark:shadow-white/10">
                                 <h3 className="text-2xl">{stars}</h3>
                                 <h4 className="font-bold">Stars</h4>
                                 <p>Stars acrossing all repositories</p>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 )}
-            </div>
+            </motion.div>
             <h2 className="text-4xl mt-10 ml-5">{userName}'s projects</h2>
             <div className="flex gap-5 mt-5 ml-5 mr-5 mb-5">
                 {projects.map((project) => (
-                    <div className="bg-gray-200 rounded-2xl border dark:border-white border-black dark:bg-[#292828] flex flex-col w-70 items-center text-center pt-5 pb-5 pl-5 pr-5 shadow-lg dark:shadow-white/10" key={project.id}>
+                    <motion.div transition={{ type: "spring", duration: 1.5 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="bg-gray-200 rounded-2xl border dark:border-white border-black dark:bg-[#292828] flex flex-col w-70 items-center text-center pt-5 pb-5 pl-5 pr-5 shadow-lg dark:shadow-white/10" key={project.id}>
                         <h3 className="text-3xl">Project: {project.title}</h3>
                         <p className="text-2xl">Description: </p>
                         <p>{project.description}</p>
@@ -126,7 +127,7 @@ export default function HomePage() {
                                     </div>
                                 ))}
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </>
