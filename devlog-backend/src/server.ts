@@ -42,7 +42,7 @@ app.get("/github/callback", async (req, res) => {
         name: repo.name,
         full_name: repo.full_name,
         private: repo.private,
-        html_url: repo.html_url,    
+        html_url: repo.html_url,
         stargazers_count: repo.stargazers_count
     }));
 
@@ -72,6 +72,7 @@ app.get("/api/github/loadRepositories", async (req, res) => {
     });
 
     const installId = installationId[0];
+    if (!installId) return res.status(200).json({ selectProject, selectRepo, userData: null });
 
     const octokit = await getApp(installId);
 

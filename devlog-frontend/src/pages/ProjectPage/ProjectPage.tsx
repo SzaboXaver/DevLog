@@ -4,6 +4,7 @@ import { supabase } from "../../backend/supabase";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { createError, updateError } from "../../backend/backend";
+import {motion} from "motion/react";
 
 type Commit = {
     sha: string;
@@ -92,27 +93,31 @@ export default function ProjectPage() {
     const projectId = state?.projectId;
 
     async function handeProjectCreationButton() {
+        if(!errorName || !description) {
+            window.alert("Fill every field!");
+            return;
+        }
         const response = await createError(errorName, description, projectId);
         if (response?.status === 201) navigate("/home");
     }
     return (
         <>
             <title>{`DevLog - ${responseData?.title ?? ""}`}</title>
-            <div className="flex pr-5 pl-5 mt-5 ml-5 mr-5 shadow-xl dark:shadow-white/10 items-center justify-between bg-gray-100 dark:bg-[#292828]">
+            <motion.div transition={{ type: "spring", duration: 1.5 }} initial={{ opacity: 0, y: "-100px" }} animate={{ opacity: 1, y: "0px" }} className="flex pr-5 pl-5 mt-5 ml-5 mr-5 shadow-xl dark:shadow-white/10 items-center justify-between bg-gray-100 dark:bg-[#292828]">
                 <h1 className="text-2xl">DEVLOG - {responseData?.title}</h1>
                 <NavLink className="transation-all duration-250 ease-in-out border border-indigo-500 py-4 px-8 hover:text-white font-bold hover:bg-indigo-400 hover:shadow-lg rounded-2xl" to="">Settings</NavLink>
                 <NavLink className="transation-all duration-250 ease-in-out border border-indigo-500 py-4 px-8 hover:text-white font-bold hover:bg-indigo-400 hover:shadow-lg rounded-2xl" to="/home/createProject">Create project</NavLink>
                 <NavLink className="transation-all duration-250 ease-in-out border border-indigo-500 py-4 px-8 hover:text-white font-bold hover:bg-indigo-400 hover:shadow-lg rounded-2xl" to="/home">Home</NavLink>
-            </div>
+            </motion.div>
             <div className="flex flex-col mx-auto w-400 mt-10 mb-20 gap-10">
-                <div className="border border-black dark:border-white flex flex-col gap-2 max-h-96 overflow-y-auto text-center pb-5
+                <motion.div transition={{ type: "spring", duration: 2 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="border border-black dark:border-white flex flex-col gap-2 max-h-96 overflow-y-auto text-center pb-5
                     bg-[#7d81ec] dark:bg-[#1c1f6c]
                     shadow-xl dark:shadow-white/10">
                     <h1 className="text-3xl text-center mt-5 mb-5">About {responseData?.title}</h1>
                     <p>{responseData?.description}</p>
-                </div>
+                </motion.div>
 
-                <div className="border border-black dark:border-white flex flex-col gap-2 max-h-96 overflow-y-auto
+                <motion.div transition={{ type: "spring", duration: 2.5 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="border border-black dark:border-white flex flex-col gap-2 max-h-96 overflow-y-auto
                     bg-[#78e6b5] dark:bg-[#115d2a]
                     shadow-xl dark:shadow-white/10">
                     <h1 className="text-3xl text-center mt-5 mb-5">Commits</h1>
@@ -129,9 +134,9 @@ export default function ProjectPage() {
                             <hr></hr>
                         </div>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className="border border-black dark:border-white flex flex-col gap-2 max-h-96 overflow-y-auto
+                <motion.div transition={{ type: "spring", duration: 3 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="border border-black dark:border-white flex flex-col gap-2 max-h-96 overflow-y-auto
                     bg-gray-300 dark:bg-[#292828]
                     shadow-xl dark:shadow-white/10">
                     <h1 className="text-3xl text-center mt-5 mb-5">Files in this repository</h1>
@@ -142,9 +147,9 @@ export default function ProjectPage() {
                             <hr />
                         </div>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className="border border-black dark:border-white flex flex-col gap-2 max-h-150 overflow-y-auto
+                <motion.div transition={{ type: "spring", duration: 3.5 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="border border-black dark:border-white flex flex-col gap-2 max-h-150 overflow-y-auto
                     bg-[#ed7171] dark:bg-[#dd3838]
                     shadow-xl dark:shadow-white/10 pb-5">
                     <h1 className="text-3xl text-center mt-5 mb-5">Errors in the project</h1>
@@ -169,8 +174,8 @@ export default function ProjectPage() {
                     </div>)))
 
                         : (<></>)}
-                </div>
-                <div className="flex flex-col w-100 mx-auto text-center gap-5">
+                </motion.div>
+                <motion.div transition={{ type: "spring", duration: 4 }} initial={{ opacity: 0, y:"100px" }} animate={{ opacity: 1, y:"0px" }} className="flex flex-col w-100 mx-auto text-center gap-5">
 
                     <label className="text-2xl mb-2.5">Error name</label>
                     <input value={errorName} onChange={(e) => setErrorName(e.target.value)} className="border-4 border-red-900 rounded-2xl py-4 px-8 pl-5 w-100" type="text" placeholder="e.g. Fetching error" />
@@ -180,7 +185,7 @@ export default function ProjectPage() {
                         <button onClick={handeProjectCreationButton} className="transition-all mx-auto duration-250 ease-in-out py-4 px-8 font-bold border border-red-900 rounded-2xl hover:bg-red-400 cursor-pointer hover:shadow-lg">Create error</button>
                     </div>
 
-                </div>
+                </motion.div>
             </div>
         </>
     );

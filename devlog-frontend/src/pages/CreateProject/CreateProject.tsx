@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { connectToGitHub, createProject, loadPorjects } from "../../backend/backend";
 import { supabase } from "../../backend/supabase";
 import { NavLink, useNavigate } from "react-router";
+import {motion} from "motion/react";
 export default function CreateProjectPage() {
     const navigate = useNavigate();
 
@@ -29,6 +30,11 @@ export default function CreateProjectPage() {
     }
 
     async function handeProjectCreationButton() {
+        if(!projectName || !description) {
+            window.alert("Fill every field!");
+            return;
+        }
+
         const response = await createProject(projectName, description, selectedRepoIds);
         if (response?.status === 201) {
             navigate("/home");
@@ -57,7 +63,7 @@ export default function CreateProjectPage() {
     return (
         <>
             <title>DevLog - Create project</title>
-            <div className="mt-20 pb-10 pt-10 flex flex-col ml-auto mr-auto w-200 text-center items-center dark:bg-[#292828] shadow-2xl dark:shadow-white/10">
+            <motion.div transition={{type: "spring", duration: 2.5}} initial={{opacity: 0, scaleY: 0, scaleX: 0}} animate={{opacity: 1, scaleY: 1, scaleX: 1}} exit={{opacity: 0, scaleX: 0, scaleY: 0}} className="mt-20 pb-10 pt-10 flex flex-col ml-auto mr-auto w-200 text-center items-center dark:bg-[#292828] shadow-2xl dark:shadow-white/10">
                 <h1 className="text-4xl mb-10">DevLog - Create Project</h1>
                 <label className="text-2xl mb-2.5">Project name</label>
                 <input value={projectName} onChange={(e) => setProjectName(e.target.value)} className="border border-indigo-600 rounded-2xl py-4 px-8 pl-5 w-100" type="text" placeholder="e.g. DevLog" />
@@ -87,7 +93,7 @@ export default function CreateProjectPage() {
                     </div>
                     <button onClick={handeProjectCreationButton} className="transition-all duration-250 ease-in-out py-4 px-8 font-bold border border-indigo-600 rounded-2xl hover:bg-indigo-400 cursor-pointer hover:shadow-lg">Create project</button>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 }

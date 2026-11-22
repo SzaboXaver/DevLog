@@ -14,3 +14,9 @@ dist/
 # Private keys
 *.pem
 *.key
+
+# AI tools
+.agents/
+.claude/
+.codex/
+.mcp.json
