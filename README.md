@@ -10,48 +10,14 @@ I tried to challenge myself instead of making a regular to-do app.
 
 You'll be able to find all the versions in the tags over time.
 
-## About V0.5
-### Features
+## About V0.9
+### Featues
 
 #### Frontend
-* The website uses the new `Tailwind` css library to provide modern, responsive design.
-* Users can create new projects, connect one or multiple GitHub repositories to each project.
-* On the home page, users can view their own projects, and they can sign out any time."
+* The data loading experience, is now much smoother and more visually appealing.
+* Animation library:  `Motion`
+* Input validation
 
-#### Backend
-* From now on, the backend works only with third party calls.
-
-#### Database
-* From now on, the front end makes the calls to the database, the database uses suitable RLS rules to handle the authentication.
-
-
-## About V0.2
-### Features
-
-#### Frontend
-* CreateProjectPage: Users can create new projects and connect their GitHub repositories to it.
-
-#### Backend
-* `server.ts` uese the methods from seperate files.
-* From now on, the server uses the Supabase service key for a few database operation.
-* The server uses `.env` file for the sensitive variables. 
-
-## About v0.1
-
-### Features
-
-#### Frontend
-* Login: The user is able to log in to their own account.
-* Registration: Newcomers are able to create new accounts.
-* Homepage: On the homepage, the website loads the user data from the database safely.
-
-#### Backend
-* `server.ts` uses the methods from separate files.
-* Each method is able to handle errors and send back the response to the client side.
-* The backend uses the **Day.js npm library** to get the current date when a user creates their account.
-
-#### Database
-* The database uses multiple RLS policies for user protection.
 
 ### Getting started
 
